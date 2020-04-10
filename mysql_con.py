@@ -6,25 +6,22 @@ try:
                                          database='soletrando',
                                          user='root',
                                          password='123456')
-    create_database_sql = """
-        CREATE TABLE IF NOT EXISTS dificuldade (
-            `id` INT NOT NULL AUTO_INCREMENT,
+    create_database_sql = """    
+        CREATE TABLE IF NOT EXISTS `dificuldade` (
+            `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             `nivel` VARCHAR(20)
         );
         
-        CREATE TABLE IF NOT EXISTS soletrando (
-            `id` INT NOT NULL AUTO_INCREMENT,
+        CREATE TABLE IF NOT EXISTS `soletrando` (
+            `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             `palavra` VARCHAR(100),
             `palavra_comp` VARCHAR(140),
-            `dificuldade_id` INT,
+            `dificuldade` INT,
             CONSTRAINT fk_dificuldade
-            FOREIGN KEY (dificuldade_id) 
+            FOREIGN KEY (dificuldade) 
                 REFERENCES dificuldade(id)
         );
-
-        TRUNCATE TABLE dificuldade;
-        TRUNCATE TABLE soletrando;
-
+	
         INSERT INTO `dificuldade` (nivel) VALUES ('Fácil');
         INSERT INTO `dificuldade` (nivel) VALUES ('Normal');
         INSERT INTO `dificuldade` (nivel) VALUES ('Difícil');
