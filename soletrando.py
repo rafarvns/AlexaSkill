@@ -9,7 +9,8 @@ import random
 
 app = Flask(__name__)
 ask = Ask(app, "/")
-palavra = "TECLADO"
+palavra_comp = "TECLADO"
+palavra = "t. e. c. l. a. d. o."
 
 @ask.launch
 def start_skill():
@@ -46,7 +47,7 @@ def get_word(level_word):
 @ask.intent('SoletraIntent', convert={'soletracao': str})
 def get_word(soletracao):
 
-    if(soletracao == palavra):
+    if(soletracao == palavra_comp):
         return statement("Parabéns, você acertou!")
     
     return statement("Oh não! você errou! A resposta correta é: " + palavra)
