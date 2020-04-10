@@ -12,8 +12,8 @@ def get_a_random_word():
         if connection.is_connected():
             db_Info = connection.get_server_info()       
             cursor = connection.cursor()
-            mycursor.execute("select palavra, palavra_comp from soletrando order by rand() limit 1;")
-            word = mycursor.fetchall()
+            cursor.execute("select palavra, palavra_comp from soletrando order by rand() limit 1;")
+            word = cursor.fetchall()
             
 
     except Error as e:
