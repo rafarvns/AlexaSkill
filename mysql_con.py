@@ -6,7 +6,7 @@ try:
                                          database='soletrando',
                                          user='root',
                                          password='123456')
-    create_database = """
+    create_database_sql = """
         CREATE TABLE IF NOT EXISTS `dificuldade` (
             `id` INT NOT NULL AUTO_INCREMENT,
             `nivel` VARCHAR
@@ -46,7 +46,8 @@ try:
         db_Info = connection.get_server_info()
         print("Connected to MySQL Server version ", db_Info)
         cursor = connection.cursor()
-        cursor.execute("select database();")
+        result = cursor.execute(create_database_sql)
+        print("Tabelas criadas e dados inseridos com sucesso!")
         record = cursor.fetchone()
         print("You're connected to database: ", record)
 
