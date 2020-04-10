@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
 
-def get_a_random_word()
+def get_a_random_word():
     word = None
     try:
         connection = mysql.connector.connect(host='mysql',
