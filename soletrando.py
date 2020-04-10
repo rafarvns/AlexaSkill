@@ -9,6 +9,7 @@ import random
 
 app = Flask(__name__)
 ask = Ask(app, "/")
+palavra = ''
 
 @ask.launch
 def start_skill():
@@ -26,9 +27,9 @@ def get_word(level_word):
                                 "Me peça uma palavra!",
                                 "Peça uma palavra, como por exemplo: Me dê uma palavra fácil!"]
     
-    frases_resposta = [ "Muito bem! Soletre: Casa!",
-                        "Legal! Agora soletre: Teclado!",
-                        "Okay! Soletre: Computador!"]
+    frases_resposta = [ "Muito bem! Diga iniciar e soletre a palavra: ",
+                        "Legal! Diga iniciar e já soletre a palavra: ",
+                        "Okay! Diga iniciar e em seguida soletre a palavra: "]
 
     if 'level_word' in convert_errors:
         return question(random.choice(frases_duvida))
@@ -36,7 +37,19 @@ def get_word(level_word):
     if level_word is None:
         return question(random.choice(frases_solicitar_idade))
 
-    return statement(random.choice(frases_resposta).format(level_word))
+    palavra_ = "Teclado!"
+    palavra = "T e c l a d o"
+    frase_resposta = random.choice(frases_resposta) + palavra_
+
+    return statement(frase_resposta.format(level_word))
+
+@ask.intent('SoletraIntent', convert={'soletracao': str})
+def get_word(soletracao):
+
+    if(soletracao == palavra):
+        return statement("Parabéns, você acertou!")
+    
+    return statement("Oh não! você errou! A resposta correta é: " + palavra)
 
 @ask.intent('AMAZON.StopIntent')
 def stop():
