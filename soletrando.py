@@ -9,7 +9,7 @@ import random
 
 app = Flask(__name__)
 ask = Ask(app, "/")
-palavra = ''
+palavra = "t. e. c. l. a. d. o."
 
 @ask.launch
 def start_skill():
@@ -38,7 +38,7 @@ def get_word(level_word):
         return question(random.choice(frases_solicitar_idade))
 
     palavra_ = "Teclado!"
-    palavra = "T e c l a d o"
+ 
     frase_resposta = random.choice(frases_resposta) + palavra_
 
     return statement(frase_resposta.format(level_word))
