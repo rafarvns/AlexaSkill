@@ -20,8 +20,10 @@ try:
             CONSTRAINT fk_dificuldade
             FOREIGN KEY (dificuldade) 
                 REFERENCES dificuldade(id)
-        );
+        );   
+     """
 
+     add_data_sql = """
         INSERT INTO dificuldade (nivel) VALUES ('Fácil');
         INSERT INTO dificuldade (nivel) VALUES ('Normal');
         INSERT INTO dificuldade (nivel) VALUES ('Difícil');
@@ -37,14 +39,17 @@ try:
         INSERT INTO soletrando (palavra, palavra_comp, dificuldade) VALUES ('MONITOR', 'm. o. n. i. t. o. r.', 2);
 
         INSERT INTO soletrando (palavra, palavra_comp, dificuldade) VALUES ('ROTEADOR', 'r. o. t. e. a. d. o. r.', 3);
-        INSERT INTO soletrando (palavra, palavra_comp, dificuldade) VALUES ('AQUECEDOR', 'a. q. u. e. c. e. d. o. r.', 3);       
+        INSERT INTO soletrando (palavra, palavra_comp, dificuldade) VALUES ('AQUECEDOR', 'a. q. u. e. c. e. d. o. r.', 3);    
      """
 
     if connection.is_connected():
         db_Info = connection.get_server_info()
         print("Connected to MySQL Server version ", db_Info)
         cursor = connection.cursor()
-        result = cursor.execute(create_tabelas_e_adiciona_dados_sql)    
+        result = cursor.execute(create_tabelas_e_adiciona_dados_sql)  
+        cursor.fetchall()  
+        result_d = cursor.execute(add_data_sql) 
+        cursor.fetchall() 
         connection.commit()
         print("Tabelas criadas e Dados adicionados com sucesso!")
 
