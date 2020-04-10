@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_ask import Ask, statement, request, context, question, session, convert_errors, version
+from mysql_con import get_a_random_word
 import json
 import requests
 import time
@@ -38,7 +39,13 @@ def get_word(level_word):
     if level_word is None:
         return question(random.choice(frases_solicitar_idade))
 
-    palavra_ = "Teclado!"
+    word = get_a_random_word()
+    
+    for w in word:
+        palavra_comp = w.palavra_comp
+        palavra = w.palavra
+        
+    palavra_ = palavra+"!"
  
     frase_resposta = random.choice(frases_resposta) + palavra_
 
