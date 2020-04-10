@@ -40,11 +40,12 @@ def get_word(level_word):
         return question(random.choice(frases_solicitar_idade))
 
     word = get_a_random_word()
-    
+    print(word)
     for w in word:
+        print(w)
         palavra_comp = w.palavra_comp
         palavra = w.palavra
-        
+
     palavra_ = palavra+"!"
  
     frase_resposta = random.choice(frases_resposta) + palavra_
