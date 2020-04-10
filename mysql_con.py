@@ -45,7 +45,7 @@ try:
         print("Connected to MySQL Server version ", db_Info)
         cursor = connection.cursor()
         result = cursor.execute(create_tabelas_e_adiciona_dados_sql)    
-        cursor.commit()
+        connection.commit()
         print("Tabelas criadas e Dados adicionados com sucesso!")
 
 except Error as e:
