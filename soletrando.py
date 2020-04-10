@@ -44,7 +44,7 @@ def get_word(level_word):
         palavra_comp = w[0]
         palavra = w[1]
 
-    palavra_ = palavra+"!"
+    palavra_ = palavra_comp+"!"
  
     frase_resposta = random.choice(frases_resposta) + palavra_
 
