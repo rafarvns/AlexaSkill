@@ -6,7 +6,7 @@ try:
                                          database='soletrando',
                                          user='root',
                                          password='123456')
-    create_database_sql = """    
+    create_tabelas_sql = """    
         CREATE TABLE IF NOT EXISTS `dificuldade` (
             `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             `nivel` VARCHAR(20)
@@ -21,7 +21,9 @@ try:
             FOREIGN KEY (dificuldade) 
                 REFERENCES dificuldade(id)
         );
-	
+     """
+
+     add_dados_sql = """
         INSERT INTO `dificuldade` (nivel) VALUES ('Fácil');
         INSERT INTO `dificuldade` (nivel) VALUES ('Normal');
         INSERT INTO `dificuldade` (nivel) VALUES ('Difícil');
@@ -44,10 +46,11 @@ try:
         db_Info = connection.get_server_info()
         print("Connected to MySQL Server version ", db_Info)
         cursor = connection.cursor()
-        result = cursor.execute(create_database_sql)
-        print("Tabelas criadas e dados inseridos com sucesso!")
-        record = cursor.fetchone()
-        print("You're connected to database: ", record)
+        result_t = cursor.execute(create_tabelas_sql)    
+        result_d = cursor.execute(add_dados_sql)
+        cursor.commit()
+        print("Tabelas criadas com sucesso!")
+        print("Dados adicionados com sucesso!")
 
 except Error as e:
     print("Error while connecting to MySQL", e)
