@@ -9,7 +9,7 @@ import random
 
 app = Flask(__name__)
 ask = Ask(app, "/")
-palavra = "t. e. c. l. a. d. o."
+palavra = "TECLADO"
 
 @ask.launch
 def start_skill():
