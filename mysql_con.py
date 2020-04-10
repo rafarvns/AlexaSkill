@@ -16,9 +16,9 @@ try:
             `id` INT NOT NULL AUTO_INCREMENT,
             `palavra` VARCHAR(100),
             `palavra_comp` VARCHAR(140),
-            `dificuldade` INT,
+            `dificuldade_id` INT,
             CONSTRAINT fk_dificuldade
-            FOREIGN KEY (dificuldade) 
+            FOREIGN KEY (dificuldade_id) 
                 REFERENCES dificuldade(id)
         );
 
