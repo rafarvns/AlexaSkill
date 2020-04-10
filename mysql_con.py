@@ -7,11 +7,11 @@ try:
                                          user='root',
                                          password='123456')
     create_database_sql = """
-        CREATE TABLE IF NOT EXISTS `dificuldade` (
+        CREATE TABLE IF NOT EXISTS dificuldade (
             `id` INT NOT NULL AUTO_INCREMENT,
             `nivel` VARCHAR
         );
-        CREATE TABLE IF NOT EXISTS `soletrando` (
+        CREATE TABLE IF NOT EXISTS soletrando (
             `id` INT NOT NULL AUTO_INCREMENT,
             `palavra` VARCHAR(100),
             `palavra_comp` VARCHAR,
