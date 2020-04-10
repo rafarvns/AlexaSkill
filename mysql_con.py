@@ -6,7 +6,7 @@ try:
                                          database='soletrando',
                                          user='root',
                                          password='123456')
-    create_tabelas_sql = """    
+    create_tabelas_e_adiciona_dados_sql = """    
         CREATE TABLE IF NOT EXISTS `dificuldade` (
             `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
             `nivel` VARCHAR(20)
@@ -21,9 +21,7 @@ try:
             FOREIGN KEY (dificuldade) 
                 REFERENCES dificuldade(id)
         );
-     """
 
-     add_dados_sql = """
         INSERT INTO `dificuldade` (nivel) VALUES ('Fácil');
         INSERT INTO `dificuldade` (nivel) VALUES ('Normal');
         INSERT INTO `dificuldade` (nivel) VALUES ('Difícil');
@@ -39,18 +37,16 @@ try:
         INSERT INTO `soletrando` (palavra, palavra_comp, dificuldade) VALUES ('MONITOR', 'm. o. n. i. t. o. r.', 2);
 
         INSERT INTO `soletrando` (palavra, palavra_comp, dificuldade) VALUES ('ROTEADOR', 'r. o. t. e. a. d. o. r.', 3);
-        INSERT INTO `soletrando` (palavra, palavra_comp, dificuldade) VALUES ('AQUECEDOR', 'a. q. u. e. c. e. d. o. r.', 3);
+        INSERT INTO `soletrando` (palavra, palavra_comp, dificuldade) VALUES ('AQUECEDOR', 'a. q. u. e. c. e. d. o. r.', 3);        
      """
 
     if connection.is_connected():
         db_Info = connection.get_server_info()
         print("Connected to MySQL Server version ", db_Info)
         cursor = connection.cursor()
-        result_t = cursor.execute(create_tabelas_sql)    
-        result_d = cursor.execute(add_dados_sql)
+        result = cursor.execute(create_tabelas_e_adiciona_dados_sql)    
         cursor.commit()
-        print("Tabelas criadas com sucesso!")
-        print("Dados adicionados com sucesso!")
+        print("Tabelas criadas e Dados adicionados com sucesso!")
 
 except Error as e:
     print("Error while connecting to MySQL", e)
