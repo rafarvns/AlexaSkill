@@ -9,12 +9,13 @@ try:
     create_database_sql = """
         CREATE TABLE IF NOT EXISTS dificuldade (
             `id` INT NOT NULL AUTO_INCREMENT,
-            `nivel` VARCHAR
+            `nivel` VARCHAR(20)
         );
+        
         CREATE TABLE IF NOT EXISTS soletrando (
             `id` INT NOT NULL AUTO_INCREMENT,
             `palavra` VARCHAR(100),
-            `palavra_comp` VARCHAR,
+            `palavra_comp` VARCHAR(140),
             `dificuldade` INT,
             CONSTRAINT fk_dificuldade
             FOREIGN KEY (dificuldade) 
