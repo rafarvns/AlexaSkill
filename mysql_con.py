@@ -20,10 +20,9 @@ try:
             CONSTRAINT fk_dificuldade
             FOREIGN KEY (dificuldade) 
                 REFERENCES dificuldade(id)
-        );   
-     """
+        );"""
 
-     add_data_sql = """
+    add_data_sql = """
         INSERT INTO dificuldade (nivel) VALUES ('Fácil');
         INSERT INTO dificuldade (nivel) VALUES ('Normal');
         INSERT INTO dificuldade (nivel) VALUES ('Difícil');
@@ -39,8 +38,7 @@ try:
         INSERT INTO soletrando (palavra, palavra_comp, dificuldade) VALUES ('MONITOR', 'm. o. n. i. t. o. r.', 2);
 
         INSERT INTO soletrando (palavra, palavra_comp, dificuldade) VALUES ('ROTEADOR', 'r. o. t. e. a. d. o. r.', 3);
-        INSERT INTO soletrando (palavra, palavra_comp, dificuldade) VALUES ('AQUECEDOR', 'a. q. u. e. c. e. d. o. r.', 3);    
-     """
+        INSERT INTO soletrando (palavra, palavra_comp, dificuldade) VALUES ('AQUECEDOR', 'a. q. u. e. c. e. d. o. r.', 3);"""
 
     if connection.is_connected():
         db_Info = connection.get_server_info()
